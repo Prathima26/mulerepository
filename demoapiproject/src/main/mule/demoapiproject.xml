@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="54f20438-e0a0-46a8-941b-bd4ad31a0677" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="demoapiprojectFlow" doc:id="179834dd-d8b2-4089-bd03-669710048456" >
+		<http:listener doc:name="Listener" doc:id="2670322c-362e-4940-94d2-8bfde3992084" config-ref="HTTP_Listener_config" path="/mulesoft" allowedMethods="GET"/>
+		<set-payload doc:name="Set Payload" doc:id="4cb6bf24-679f-4532-8168-68c0dce67973" value="Congo! You have developed your first API application"/>
+	</flow>
+	<flow name="demoapiprojectFlow1" doc:id="72f3eeb7-0c82-4616-8fe5-91b301ea544d" >
+		<http:listener doc:name="Listener" doc:id="7700958b-d5e1-4609-a5f0-736dc4df63dc" config-ref="HTTP_Listener_config" path="/mulesoft"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="ec7ee6f0-d082-4cde-ba5a-955960b2ba6c" />
+	</flow>
+</mule>
